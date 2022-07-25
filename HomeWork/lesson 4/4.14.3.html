@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr><th>Угол</th><th>sin</th><th>cos</th><th>tg</th></tr>
+        <script type="text/javascript">
+            let a , b;
+            let c = Math.PI / 180;
+            for(a = 0; a <= 90; a+=15){
+                b = a * c
+                window.document.write('<tr>')
+                window.document.write('<td>',a, '</td><br>')
+                window.document.write('<td>',Math.sin(b), '</td>')
+                window.document.write('<td>',Math.cos(b), '</td>')
+                window.document.write('<td>',Math.tan(b), '</td>')
+                window.document.write('</tr>')
+            }
+        </script>
+    </table>
+    
+</body>
+</html>
