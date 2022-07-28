@@ -36,6 +36,18 @@
                 background-color: black;
                 cursor: auto;
             }
+            #preview{
+                position: absolute;
+                width: 120px;
+                height: 80px;
+                background-position: left;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: none;
+            }
+            #preview.active{
+                display: block;
+            }
         </style>
     </head>
     <body>
@@ -47,5 +59,64 @@
             <div id="2">2</div>
             <div id="3">3</div>
         </nav>
+        <div id="preview"></div>
     </body>
 </html>
+<script type="text/javascript">
+    const output = window.document.getElementById('output')
+    const buttons = window.document.querySelectorAll('nav div')
+    const preview =window.document.getElementById('preview');
+    let current = buttons[0]
+    function showImage(){
+        current = this
+        output.src = getImageURL(this.id)
+        buttons.forEach((el) => {
+            if (el == this){
+                el.className = 'active'
+            }else{
+                el.className = ''
+            }
+        })
+    }
+    buttons.forEach((el) => {
+        el.addEventListener('click', showImage)
+        el.addEventListener('mouseover', showPreview)
+        el.addEventListener('mousout', hidePreview)
+    })
+    function getImageURL(fileName){
+        return 'images/' + fileName + '.jpg'
+    }
+    function showPreview(evt){
+        preview.style.left = evt.pageX + 'px';
+        preview.style.top = evt.pageY + 'px';
+        preview.style.backgroundImage = 'url(' + getImageURL(this.id) +')';
+        preview.className = 'active'
+    }
+    function hidePreview(){
+        preview.className = '';
+    }
+</script>
+<!-- Основные Классы событий и их свойства -->
+
+<!-- Класс Event:
+currentTarget (элемент страницы к которому привязан текущий обработчик)
+target (элемент страницы в котором изначально возник обработчик событий)
+type (Имя возникшего события в виде строки)
+страница 113
+-->
+<!-- Класс MouseEvent:
+pageX (Горизонтальные координаты курсора мыши относительно левоговерхнего угла самой страницы в пикселях)
+pageY (Вертикальные координаты курсора мыши относительно левоговерхнего угла самой страницы в пикселях)
+offsetX (Горизонтальая координата курсора мыши относительно левого верхего угла элемента источника) 
+offsetY (Вертикальная координата курсора мыши относительно левого верхего угла элемента источника)
+clientX(Горизонтальная координата курсора мыши относительно левого верхнего угла внутри области окна)
+clientY(Вертикальная координата курсора мыши относительно левого верхнего угла внутри области окна)
+screenX(Горизонтальная координата курсора мыши относительно левого верхнего угла экрана в пикселях)
+screenY(Горизонтальная координата курсора мыши относительно левого верхнего угла экрана в пикселях)
+button(числовое обозначение нажатой кнопки)
+which(Числовое обозначение нажатой кнопки мыши + колесико)
+ctrlKey(true если нажата CTRL)
+shiftKey(true еслин нажат shift)
+altKey (true если нажат ALT)
+relatedRatget(стр 114)
+-->
