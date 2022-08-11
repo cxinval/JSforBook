@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>Коды клавиш</h1>
+   <p>Обозначение <span id="designation"></span></p>
+   <p>Код <span id="code"></span>(0x <span id="codeEx"></span>)</p>
+    
+</body>
+</html>
+<script type="text/javascript">
+    const designation = document.getElementById('designation')
+    const code = document.getElementById('code')
+    const codeEx = document.getElementById('codeEx')
+    document.body.onkeydown = function (evt){
+        designation.textContent = evt.key
+        code.textContent = evt.which
+        codeEx.textContent = evt.which.toString(16)
+    }
+
+</script>
