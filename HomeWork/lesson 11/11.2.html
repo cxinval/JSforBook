@@ -115,5 +115,7 @@
             hash = 'vsc';
         highlightActiveLink(hash);
     });
-    
+    window.addEventListener('load', () => {
+        highlightActiveLink((location.hash) ? location.hash : 'vsc');
+    });
 </script>
